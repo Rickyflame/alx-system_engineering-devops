@@ -16,5 +16,4 @@ do
 		echo "Best school"
 	fi
 	((count++))
-done 
-	
+done 	
