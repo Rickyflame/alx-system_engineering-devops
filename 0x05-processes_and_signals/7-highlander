@@ -2,7 +2,7 @@
 #Bash script that displays
 
 
-trap "echo I an invincible!!!" SIGTERM
+trap "echo I am invincible!!!" SIGTERM
 
 while true
 do
