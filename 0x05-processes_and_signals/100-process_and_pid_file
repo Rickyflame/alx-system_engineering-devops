@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #bash script htat creates a file
+clean_up_action='rm /var/run/myscript.pid; exit$?'
 
 
 echo $$ > "/var/run/myscript.pid"
