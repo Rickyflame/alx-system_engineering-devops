@@ -1,7 +1,11 @@
 POSTMORTEM
+
 On December second 2022, at 1620hours East African Time (EAT) here in kenya, there was a national power outage (Kenya Power and Lighting Company a.k.a KPLC are never prepared during the rains) that crippled major server banks across the nation. One of the server banks affected was the one that hosted the Rogueminds.tech website. GET requests on the server led to 500 Internal Server error's.
 The outage was caused by heavy rains that poured and affected a major power station that supplied the country with power. Good thing this time it wasn't an animal such as a snake like last time.
+
 DEBUGGING PROCESS
+
+
 The debugging process began at some few minutes after the outage was reported (1630hours) and our DevOps team was hot on the case to redirect traffic and get the servers back online.The following procedures where then followed to try and redirect traffic to the remaining active servers we had online:
 1. Checked running processes using ps aux. Two apache2 processes - root and www-data - were properly running.
 2. Looked in the sites-available folder of the /etc/apache2/ directory. Determined that the web server was serving content located in /var/www/html/.
@@ -14,9 +18,16 @@ Looked through files in the /var/www/html/ directory one-by-one, using Vim patte
 6. Removed the trailing p from the line.
 7. Tested another curl on the server. 200 A-ok!
 8. Wrote a Puppet manifest to automate fixing of the error.
+
  SUMMARY.
+
+
 After vigirously trying to retrieve data that was housed in the main servers that were down, the DevOps team (me, myself, I and others) were able to redirect traffic to the remaining two server that luckily where not affected by the blackout as they are not hosted in the country for such reasons. The  team was well prepared as this was not the first time this has happened as out national power company are usually never prepared for such rains every year. 
+
+
 PREVENTION
+
+
 However much cheaper it is to host our main servers in the country and our backups outside the country, we are beginning to realize that the long term it would be more effective to pay more and prevent such blackouts from affecting our beloved site every times it rains.
 We could also prevent this from happening by having a better backup system so as not not lose any of our data during such an event in future
 Always keep an eye on your servers to ensure they are running properly
